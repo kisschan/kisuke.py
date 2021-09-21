@@ -2,7 +2,15 @@ from discord.ext import commands
 from os import getenv
 import traceback
 
+# 読み込むCogの名前を格納
+INITIAL_EXTENSIONS = [
+    'cogs.discord_message_reply'
+]
+
 bot = commands.Bot(command_prefix='/')
+
+for cog in INITIAL_EXTENSIONS:
+    bot.load_extension(cog)
 
 
 @bot.event
@@ -10,15 +18,6 @@ async def on_command_error(ctx, error):
     orig_error = getattr(error, "original", error)
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
-
-
-@bot.command()
-async def ping(ctx):
-    await ctx.send('おうなんかようか？')
-
-@bot.command()
-async def 竜介(ctx):
-    await ctx.send('くさい　だろぅな・・')
 
 token = getenv('DISCORD_BOT_TOKEN')
 bot.run(token)
