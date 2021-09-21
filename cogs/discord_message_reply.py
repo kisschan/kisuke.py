@@ -11,12 +11,12 @@ class Message_RepeyCog(commands.Cog):
         print('Message_RepeyCog on ready!')
 
     @commands.command()
-    async def ping(ctx):
+    async def ping(self, ctx):
         await ctx.send('おうなんかようか？')
 
     @commands.command()
-    async def 竜介(ctx):
+    async def 竜介(self, ctx):
         await ctx.send('くさい　だろぅな・・')
 
     def setup(bot):
-        bot.add_cog(Message_RepeyCog(bot))  # Message_RepeyCogにBotを渡してインスタンス化し、Botにコグとして登録する
+        return bot.add_cog(Message_RepeyCog(bot))

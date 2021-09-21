@@ -2,16 +2,8 @@ from discord.ext import commands
 from os import getenv
 import traceback
 
-# 読み込むCogの名前を格納
-INITIAL_EXTENSIONS = [
-    'cogs.discord_message_reply'
-]
-
 bot = commands.Bot(command_prefix='/')
-
-for cog in INITIAL_EXTENSIONS:
-    bot.load_extension(cog)
-
+bot.load_extension("cogs.discord_message_reply")
 
 @bot.event
 async def on_command_error(ctx, error):
