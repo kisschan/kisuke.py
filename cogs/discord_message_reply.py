@@ -1,5 +1,4 @@
 from discord.ext import commands  # Bot Commands Frameworkをインポート
-import discord
 
 class Message_RepeyCog(commands.Cog):
     def __init__(self, bot):
@@ -11,11 +10,11 @@ class Message_RepeyCog(commands.Cog):
     async def on_ready(self):
         print('Message_RepeyCog on ready!')
 
-    @bot.command()
+    @commands.command()
     async def ping(ctx):
         await ctx.send('おうなんかようか？')
 
-    @bot.command()
+    @commands.command()
     async def 竜介(ctx):
         await ctx.send('くさい　だろぅな・・')
 
