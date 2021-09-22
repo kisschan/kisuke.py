@@ -18,5 +18,5 @@ class Message_RepeyCog(commands.Cog):
     async def 竜介(self, ctx):
         await ctx.send('くさい　だろぅな・・')
 
-    def setup(bot):
-        return bot.add_cog(Message_RepeyCog(bot))
+def setup(bot):
+    return bot.add_cog(Message_RepeyCog(bot))
