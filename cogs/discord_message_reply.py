@@ -20,7 +20,7 @@ class Message_RepeyCog(commands.Cog):
 
     @commands.command()
     async def name(self, ctx):
-        await ctx(f'{ctx.author.name}はくさぃ・・・')
+        await ctx.send(f'{ctx.author.name}はくさぃ・・・')
 
 def setup(bot):
     return bot.add_cog(Message_RepeyCog(bot))
