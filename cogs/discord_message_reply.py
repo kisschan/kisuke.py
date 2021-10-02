@@ -1,7 +1,7 @@
 from discord.ext import commands  # Bot Commands Frameworkをインポート
 import json
 import urllib.request
-from datetime import datetime 
+from datetime import datetime
 
 class Message_RepeyCog(commands.Cog):
     def __init__(self, bot):
