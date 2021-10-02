@@ -1,4 +1,7 @@
 from discord.ext import commands  # Bot Commands Frameworkをインポート
+import json
+import urllib.request
+from datetime import datetime 
 
 class Message_RepeyCog(commands.Cog):
     def __init__(self, bot):
@@ -21,6 +24,20 @@ class Message_RepeyCog(commands.Cog):
     @commands.command()
     async def name(self, ctx):
         await ctx.send(f'{ctx.author.name}はくさぃ・・・')
+
+    @commands.command()
+    async def 配信(self, ctx):
+        texts = ['http://gikopoipoi.net  で配信中']
+        url = 'https://gikopoipoi.net/areas/gen/streamers'
+        texts.extend([datetime.now().strftime('%Y{0}%-m{1}%-d{2} %-H{3}%-M{4}%-S{5}').format(*'年月日時分秒')])
+        texts.extend(["-"])
+        req = urllib.request.Request(url)
+        with urllib.request.urlopen(req) as res:
+            body = json.load(res)
+        for item in body:
+            texts.extend([i if i else '名無しさん' for i in item['streamers']])
+        import re
+        await ctx.send(re.sub('[@＠#＃]|http', '', '\n'.join(texts)))
 
 def setup(bot):
     return bot.add_cog(Message_RepeyCog(bot))
