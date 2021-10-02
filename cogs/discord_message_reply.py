@@ -38,7 +38,7 @@ class Message_RepeyCog(commands.Cog):
             texts.extend([i if i else '名無しさん' for i in item['streamers']])
         import re
         print(re.sub('[@＠#＃]|http', '', '\n'.join(texts)))
-        await ctx.send(re.sub('[@＠#＃]|http', '', '\n'.join(texts)))
+        await ctx.send(texts)
 
 def setup(bot):
     return bot.add_cog(Message_RepeyCog(bot))
