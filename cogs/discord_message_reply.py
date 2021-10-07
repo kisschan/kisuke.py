@@ -36,8 +36,7 @@ class Message_RepeyCog(commands.Cog):
             body = json.load(res)
         for item in body:
             texts.extend([i if i else '名無しさん' for i in item['streamers']])
-            ids = [i for i in item["id"]]
-            texts.extend([f'https://gikopoipoi.net/?areaid=gen&roomid={ids}'])
+            texts.extend(['https://gikopoipoi.net/?areaid=gen&roomid=' + i for i in item['id'].astype(str)])
         import re
         await ctx.send(f'{('\n'.join(texts))}')
 
