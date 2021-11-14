@@ -14,18 +14,22 @@ class Message_RepeyCog(commands.Cog):
         print('Message_RepeyCog on ready!')
 
     @commands.command()
+    # 動作確認
     async def ping(self, ctx):
         await ctx.send('おうなんかようか？')
 
     @commands.command()
+    # 竜介への悪口
     async def 竜介(self, ctx):
         await ctx.send('くさい　だろぅな・・')
 
     @commands.command()
+    # 名前を取得
     async def name(self, ctx):
         await ctx.send(f'{ctx.author.name}はくさぃ・・・')
 
     @commands.command()
+    # ぎこぽいの配信者を取得。部屋まで飛べる
     async def 配信(self, ctx):
         texts = ['http://gikopoipoi.net  で配信中']
         url = 'https://gikopoipoi.net/areas/gen/streamers'
