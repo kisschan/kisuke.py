@@ -9,28 +9,28 @@ class Message_RepeyCog(commands.Cog):
         self._last_member = None
 
     @commands.Cog.listener()
-        """Cogが読み込まれた時に発動"""
     async def on_ready(self):
+        """Cogが読み込まれた時に発動"""
         print('Message_RepeyCog on ready!')
 
     @commands.command()
-        """動作確認"""
     async def ping(self, ctx):
+        """動作確認"""
         await ctx.send('おうなんかようか？')
 
     @commands.command()
-        """竜介への悪口"""
     async def 竜介(self, ctx):
+        """竜介への悪口"""
         await ctx.send('くさい　だろぅな・・')
 
     @commands.command()
-        """名前を取得"""
     async def name(self, ctx):
+        """名前を取得"""
         await ctx.send(f'{ctx.author.name}はくさぃ・・・')
 
     @commands.command()
-    # ぎこぽいの配信者を取得。部屋まで飛べる
     async def 配信(self, ctx):
+        """ぎこぽいの配信者を取得。部屋まで飛べる"""
         texts = ['http://gikopoipoi.net  で配信中']
         url = 'https://gikopoipoi.net/areas/gen/streamers'
         texts.extend([datetime.now().strftime('%Y{0}%-m{1}%-d{2} %-H{3}%-M{4}%-S{5}').format(*'年月日時分秒')])
