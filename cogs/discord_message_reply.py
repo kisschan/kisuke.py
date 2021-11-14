@@ -9,22 +9,22 @@ class Message_RepeyCog(commands.Cog):
         self._last_member = None
 
     @commands.Cog.listener()
-    # Cogが読み込まれた時に発動
+    """Cogが読み込まれた時に発動"""
     async def on_ready(self):
         print('Message_RepeyCog on ready!')
 
     @commands.command()
-    # 動作確認
+    """動作確認"""
     async def ping(self, ctx):
         await ctx.send('おうなんかようか？')
 
     @commands.command()
-    # 竜介への悪口
+    """竜介への悪口"""
     async def 竜介(self, ctx):
         await ctx.send('くさい　だろぅな・・')
 
     @commands.command()
-    # 名前を取得
+    """名前を取得"""
     async def name(self, ctx):
         await ctx.send(f'{ctx.author.name}はくさぃ・・・')
 
