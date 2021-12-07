@@ -3,7 +3,7 @@ from discord.ext.commands import CommandNotFound
 from os import getenv
 import traceback
 
-bot = commands.Bot(command_prefix='/')
+bot = commands.Bot(command_prefix='')
 bot.load_extension("cogs.discord_message_reply")
 
 @bot.event
