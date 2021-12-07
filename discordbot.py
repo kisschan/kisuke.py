@@ -1,4 +1,5 @@
 from discord.ext import commands
+from discord.ext.commands import CommandNotFound
 from os import getenv
 import traceback
 
