@@ -19,11 +19,6 @@ class Message_RepeyCog(commands.Cog):
         await ctx.send('おうなんかようか？')
 
     @commands.command()
-    async def 竜介(self, ctx):
-        """竜介への悪口"""
-        await ctx.send('くさい　だろぅな・・')
-
-    @commands.command()
     async def name(self, ctx):
         """名前を取得"""
         await ctx.send(f'{ctx.author.name}はくさぃ・・・')
