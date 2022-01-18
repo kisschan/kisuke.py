@@ -17,7 +17,7 @@ class Message_RepeyCog(commands.Cog):
     async def ping(self, ctx):
         """動作確認"""
         await ctx.send('おうなんかようか？')
-    
+
     @commands.command()
     async def name(self, ctx):
         """名前を取得"""
