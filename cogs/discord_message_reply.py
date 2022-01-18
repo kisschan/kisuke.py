@@ -17,12 +17,7 @@ class Message_RepeyCog(commands.Cog):
     async def ping(self, ctx):
         """動作確認"""
         await ctx.send('おうなんかようか？')
-
-    @commands.command()
-    async def 竜介(self, ctx):
-        """竜介への悪口"""
-        await ctx.send('くさい　だろぅな・・')
-
+    
     @commands.command()
     async def name(self, ctx):
         """名前を取得"""
