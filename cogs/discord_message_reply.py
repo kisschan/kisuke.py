@@ -36,7 +36,7 @@ class Message_RepeyCog(commands.Cog):
         for item in body:
             texts.extend([i if i else '名無しさん' for i in item['streamers']])
             texts.extend(['https://gikopoipoi.net/?areaid=gen&roomid=' + item['id']])
-        texts.insert(2,str(len(item)) + "名が配信中")
+        texts.insert(2, str(len(item)) + "名が配信中")
         await ctx.send(('\n'.join(texts)))
 
 def setup(bot):
