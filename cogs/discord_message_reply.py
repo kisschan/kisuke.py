@@ -31,7 +31,7 @@ class Message_RepeyCog(commands.Cog):
     @commands.command()
     async def 配信(self, ctx):
         """ぎこぽいの配信者を取得。部屋まで飛べる"""
-        streamer_emoji = ["👩", "👱", "👨", "👧"] 
+        streamer_emoji = ["👩", "👱", "👨", "👧"]
         if ctx.guild.id == 930151110335938640:
             streamer_emoji = among_us
         texts = ['http://gikopoipoi.net  で配信中']
@@ -39,7 +39,7 @@ class Message_RepeyCog(commands.Cog):
         url = 'https://gikopoipoi.net/areas/gen/streamers'
         req = urllib.request.Request(url)
         streamNum = 0
-        randomEmoji=[]
+        randomEmoji = []
         with urllib.request.urlopen(req) as res:
             body = json.load(res)
         for item in body:
