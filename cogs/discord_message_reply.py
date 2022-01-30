@@ -48,10 +48,17 @@ class Message_RepeyCog(commands.Cog):
             return
         if re.search("(?:([こコｺ][ろロﾛ]|殺)[すスｽ]|koro?su)|([死氏市四４4しシｼ][ねネﾈ][よヨょョﾖｮ]?)", ctx.content):
             await ctx.delete()
-        if re.search("(?:([おオｵ][めメメ][でデﾃﾞ][とトﾄ]?[うウｳ]?)|([やヤﾔ][っッｯ][たタﾀ]))", ctx.content):
+        if re.search("(?:([おオｵ][めメメ][でデﾃﾞ][とトﾄ]?[うウｳ]?)|([やヤﾔ][っッｯ][たタﾀ][ーｰ]))", ctx.content):
             congratulation = ["🎉", "🎊", "㊗️"]
             for item in congratulation:
                 await ctx.add_reaction(item)
+        if re.search(r"(?:([あアｱ][もモﾓ][んンﾝ]?[ぐグｸﾞ]?[あアｱ][すスｽ]|(?i:among\s?us)))", ctx.content):
+            await ctx.add_reaction("🎮")
+            if ctx.guild.id == "930151110335938640":
+                among_us = ["<:amoaka:933160923915497492>", "<:amokiiro:935347898546258010>",
+                            "<:amomidori:935347876597485608>", "<:amomizu:933161501005611018>"]
+                for item in among_us:
+                    await ctx.add_reaction(item)
 
     @commands.Cog.listener()
     async def on_message_edit(self, before, after):
