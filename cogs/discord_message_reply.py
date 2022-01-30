@@ -48,8 +48,8 @@ class Message_RepeyCog(commands.Cog):
             texts.extend(['https://gikopoipoi.net/?areaid=gen&roomid=' + item['id']])
         for item in range(streamNum):
             randomEmoji.extend([random.choice(streamer_emoji)])
-        texts.insert(3, ''.join(randomEmoji))
         texts.insert(2, "(" + str(streamNum) + "名が配信中)")
+        texts.insert(2, ''.join(randomEmoji))
         await ctx.send(('\n'.join(texts)))
 
     @commands.Cog.listener()
