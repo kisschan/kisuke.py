@@ -41,7 +41,7 @@ class Message_RepeyCog(commands.Cog):
             texts.extend(['https://gikopoipoi.net/?areaid=gen&roomid=' + item['id']])
         texts.insert(2, "(" + str(streamNum) + "名が配信中)")
         await ctx.send(('\n'.join(texts)))
-    
+
     @commands.Cog.listener()
     async def on_message(self, ctx):
         if ctx.author.bot:
@@ -49,10 +49,10 @@ class Message_RepeyCog(commands.Cog):
         if re.search("(?:([こコｺ][ろロﾛ]|殺)[すスｽ]|koro?su)|([死氏市四４4しシｼ][ねネﾈ][よヨょョﾖｮ]?)", ctx.content):
             await ctx.delete()
         if re.search("(?:([おオｵ][めメメ][でデﾃﾞ][とトﾄ]?[うウｳ]?)|([やヤﾔ][っッｯ][たタﾀ]))", ctx.content):
-            congratulation = ["🎉","🎊","㊗️"]
+            congratulation = ["🎉", "🎊", "㊗️"]
             for item in congratulation:
                 await ctx.add_reaction(item)
-            
+
     @commands.Cog.listener()
     async def on_message_edit(self, before, after):
         if re.search("(?:([こコｺ][ろロﾛ]|殺)[すスｽ]|koro?su)|([死氏市四４4しシｼ][ねネﾈ][よヨょョﾖｮ]?)", after.content):
