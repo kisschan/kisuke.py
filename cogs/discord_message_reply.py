@@ -2,6 +2,7 @@ from discord.ext import commands  # Bot Commands Frameworkをインポート
 import json
 import urllib.request
 from datetime import datetime
+import re
 
 class Message_RepeyCog(commands.Cog):
     def __init__(self, bot):
@@ -40,6 +41,22 @@ class Message_RepeyCog(commands.Cog):
             texts.extend(['https://gikopoipoi.net/?areaid=gen&roomid=' + item['id']])
         texts.insert(2, "(" + str(streamNum) + "名が配信中)")
         await ctx.send(('\n'.join(texts)))
+
+    @commands.Cog.listener()
+    async def on_message(self, ctx):
+        if ctx.author.bot:
+            return
+        if re.search("(?:([こコｺ][ろロﾛ]|殺)[すスｽ]|koro?su)|([死氏市四４4しシｼ][ねネﾈ][よヨょョﾖｮ]?)", ctx.content):
+            await ctx.delete()
+        if re.search("(?:([おオｵ][めメメ][でデﾃﾞ][とトﾄ]?[うウｳ]?)|([やヤﾔ][っッｯ][たタﾀ]))", ctx.content):
+            congratulation = ["🎉", "🎊", "㊗️"]
+            for item in congratulation:
+                await ctx.add_reaction(item)
+
+    @commands.Cog.listener()
+    async def on_message_edit(self, before, after):
+        if re.search("(?:([こコｺ][ろロﾛ]|殺)[すスｽ]|koro?su)|([死氏市四４4しシｼ][ねネﾈ][よヨょョﾖｮ]?)", after.content):
+            await after.delete()
 
 def setup(bot):
     return bot.add_cog(Message_RepeyCog(bot))
