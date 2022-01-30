@@ -16,4 +16,4 @@ async def on_command_error(ctx, error):
     await ctx.send(error_msg)
 
 token = getenv('DISCORD_BOT_TOKEN')
-bot.run(token)
+bot.run('ODU5NDI3OTUwNzIwOTc0ODQ5.YNsipg.M3nT7oPNcyTkmbsbDEek7IXEE88')
