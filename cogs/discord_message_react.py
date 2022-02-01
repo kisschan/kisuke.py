@@ -3,18 +3,18 @@ import re
 
 
 class Message_ReactCog(commands.Cog):
-    
+
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
         self.among_us = ["<:amoaka:933160923915497492>", "<:amokiiro:935347898546258010>",
                          "<:amomidori:935347876597485608>", "<:amomizu:933161501005611018>"]
-        
+
     @commands.Cog.listener()
     async def on_ready(self):
         """Cogが読み込まれた時に発動"""
         print('Message_ReactCog on ready!')
-    
+
     @commands.Cog.listener()
     async def on_message(self, ctx):
         if ctx.author.bot:
