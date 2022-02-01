@@ -2,21 +2,20 @@ from discord.ext import commands  # Bot Commands Frameworkをインポート
 import json
 import urllib.request
 from datetime import datetime
-import re
 import random
 
-among_us = ["<:amoaka:933160923915497492>", "<:amokiiro:935347898546258010>",
-            "<:amomidori:935347876597485608>", "<:amomizu:933161501005611018>"]
 
 class Message_RepeyCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
+        self.among_us = ["<:amoaka:933160923915497492>", "<:amokiiro:935347898546258010>",
+                         "<:amomidori:935347876597485608>", "<:amomizu:933161501005611018>"]
 
     @commands.Cog.listener()
     async def on_ready(self):
         """Cogが読み込まれた時に発動"""
-        print('Message_RepeyCog on ready!')
+        print('Message_ReplyCog on ready!')
 
     @commands.command()
     async def ping(self, ctx):
@@ -33,7 +32,7 @@ class Message_RepeyCog(commands.Cog):
         """ぎこぽいの配信者を取得。部屋まで飛べる"""
         streamer_emoji = ["👩", "👱", "👨", "👧"]
         if ctx.guild.id == 930151110335938640:
-            streamer_emoji = among_us
+            streamer_emoji = self.among_us
         texts = ['http://gikopoipoi.net  で配信中']
         texts.extend([datetime.now().strftime('%Y{0}%-m{1}%-d{2} %-H{3}%-M{4}%-S{5}').format(*'年月日時分秒')])
         url = 'https://gikopoipoi.net/areas/gen/streamers'
@@ -52,26 +51,6 @@ class Message_RepeyCog(commands.Cog):
         texts.insert(2, ''.join(randomEmoji))
         await ctx.send(('\n'.join(texts)))
 
-    @commands.Cog.listener()
-    async def on_message(self, ctx):
-        if ctx.author.bot:
-            return
-        if re.search("(?:([こコｺ][ろロﾛ]|殺)[すスｽ]|koro?su)|([死氏市四４4しシｼ][ねネﾈ][よヨょョﾖｮ]?)", ctx.content):
-            await ctx.delete()
-        if re.search("(?:([おオｵ][めメメ][でデﾃﾞ][とトﾄ]?[うウｳ]?)|([やヤﾔ][っッｯ][たタﾀ][ーｰ]))", ctx.content):
-            congratulation = ["🎉", "🎊", "㊗️"]
-            for item in congratulation:
-                await ctx.add_reaction(item)
-        if re.search(r"(?:([あアｱ][もモﾓ][んンﾝ]?[ぐグｸﾞ]?[あアｱ][すスｽ]|(?i:among\s?us)))", ctx.content):
-            await ctx.add_reaction("🎮")
-            if ctx.guild.id == 930151110335938640:
-                for item in among_us:
-                    await ctx.add_reaction(item)
-
-    @commands.Cog.listener()
-    async def on_message_edit(self, before, after):
-        if re.search("(?:([こコｺ][ろロﾛ]|殺)[すスｽ]|koro?su)|([死氏４4しシｼ][ねネﾈ][よヨょョﾖｮ]?)", after.content):
-            await after.delete()
 
 def setup(bot):
     return bot.add_cog(Message_RepeyCog(bot))
