@@ -32,6 +32,14 @@ class Message_ReactCog(commands.Cog):
                     await ctx.add_reaction(item)
         if re.search(r"(?:(([まマﾏ][ーｰあアｱ]|麻)(([じジ]|ｼﾞ)[ゃャｬ][んンﾝ]|雀)))", ctx.content):
             await ctx.add_reaction("🀄")
+        if re.search(r"(?:(([ぱパ]|ﾊﾟ)([ずズ]|ｽﾞ)[るルﾙ]))", ctx.content):
+            await ctx.add_reaction("🧩")
+        if re.search(r"(?:([のノﾉ飲][みミﾐ]|[酒]|([びビ]|ﾋﾞ)[ーｰい][るルﾙ]))", ctx.content):
+            await ctx.add_reaction("🍻")
+        if re.search(r"(?:([たタﾀ]([ばバ]|ﾊﾞ)[こコｺ]|[しシｼ][ーｰ][しシｼ][ゃャｬ]))", ctx.content):
+            await ctx.add_reaction("🚬")
+        if re.search(r"(?:([いイｲ]([いイｲ]|[ーｰ])[ねネﾈ]))", ctx.content):
+            await ctx.add_reaction("👍🏻")
 
     @commands.Cog.listener()
     async def on_message_edit(self, before, after):
