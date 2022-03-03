@@ -50,7 +50,7 @@ class Message_ReactCog(commands.Cog):
             congratulation = ["🎉", "🎊", "㊗️"]
             for item in congratulation:
                 await ctx.add_reaction(item)
-       
+
         if re.search(r"(?:([あアｱ][もモﾓ][んンﾝ]?[ぐグｸﾞ]?[あアｱ][すスｽ]|(?i:among\s?us)))", ctx.content):
             await ctx.add_reaction("🎮")
             if ctx.guild.id == 930151110335938640:
