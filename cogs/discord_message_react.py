@@ -47,7 +47,7 @@ class Message_ReactCog(commands.Cog):
                 texts.insert(2, ''.join(randomEmoji))
                 time.sleep(1*60*60*1)
                 await ctx.channel.send(('\n'.join(texts)))
-        if ctx.content == "配信やめ":
+        if ctx.content == "配信おわり":
             self.switch_haishin = False
         if ctx.author.bot:
             return
