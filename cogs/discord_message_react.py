@@ -25,6 +25,7 @@ class Message_ReactCog(commands.Cog):
     async def on_message(self, ctx):
         if ctx.content == "配信":
             self.switch_haishin = True
+            sleeptime = 1
             while self.switch_haishin is True:
                 streamer_emoji = ["👩", "👱", "👨", "👧"]
                 if ctx.guild.id == 930151110335938640:
@@ -45,7 +46,8 @@ class Message_ReactCog(commands.Cog):
                     randomEmoji.extend([random.choice(streamer_emoji)])
                 texts.insert(2, "(" + str(streamNum) + "名が配信中)")
                 texts.insert(2, ''.join(randomEmoji))
-                time.sleep(1 * 60 * 60 * 1)
+                time.sleep(sleeptime)
+                sleeptime = 1 * 60 * 60 * 1
                 await ctx.channel.send(('\n'.join(texts)))
         if ctx.content == "配信おわり":
             self.switch_haishin = False
