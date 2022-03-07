@@ -35,11 +35,17 @@ class Message_ReactCog(commands.Cog):
             randomEmoji.extend([random.choice(streamer_emoji)])
         texts.insert(2, "(" + str(streamNum) + "名が配信中)")
         texts.insert(2, ''.join(randomEmoji))
-        return ('\n'.join(texts))
+        if streamNum != 0:
+            return ('\n'.join(texts))
+        else:
+            return "公開している配信者はいません"
 
     @tasks.loop(hours=2)
     async def auto_haishin(self, ctx):
-        await ctx.channel.send(self.haishin(ctx))
+        if self.haishin(ctx) == "公開している配信者はいません":
+            return
+        else:
+            await ctx.channel.send(self.haishin(ctx))
 
     @commands.Cog.listener()
     async def on_ready(self):
