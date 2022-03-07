@@ -15,8 +15,7 @@ class Message_ReactCog(commands.Cog):
         self.among_us = ["<:amoaka:933160923915497492>", "<:amokiiro:935347898546258010>",
                          "<:amomidori:935347876597485608>", "<:amomizu:933161501005611018>"]
 
-    @tasks.loop(hours=2)
-    async def haishin(self, ctx):
+    def haishin(self, ctx):
         streamer_emoji = ["👩", "👱", "👨", "👧"]
         if ctx.guild.id == 930151110335938640:
             streamer_emoji = self.among_us
@@ -36,7 +35,11 @@ class Message_ReactCog(commands.Cog):
             randomEmoji.extend([random.choice(streamer_emoji)])
         texts.insert(2, "(" + str(streamNum) + "名が配信中)")
         texts.insert(2, ''.join(randomEmoji))
-        await ctx.channel.send(('\n'.join(texts)))
+        return ('\n'.join(texts))
+
+    @tasks.loop(hours=2)
+    async def auto_haishin(self, ctx):
+        await ctx.channel.send(self.haishin(ctx))
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -46,9 +49,11 @@ class Message_ReactCog(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, ctx):
         if ctx.content == "配信":
-            self.haishin.start(ctx)
+            await ctx.channel.send(self.haishin(ctx))
+        if ctx.content == "配信はじめ":
+            self.auto_haishin.start(ctx)
         if ctx.content == "配信おわり":
-            self.haishin.stop()
+            self.auto_haishin.stop()
         if ctx.author.bot:
             return
         if re.search("(?:([こコｺ][ろロﾛ]|殺)[すスｽ]|koro?su)|([死氏市四４4しシｼ][ねネﾈ][よヨょョﾖｮ]?)", ctx.content):
