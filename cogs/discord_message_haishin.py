@@ -5,6 +5,7 @@ import urllib.request
 from datetime import datetime
 import random
 
+
 class Message_haishinCog(commands.Cog):
 
     def __init__(self, bot):
