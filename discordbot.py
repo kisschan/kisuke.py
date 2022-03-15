@@ -6,7 +6,6 @@ import traceback
 bot = commands.Bot(command_prefix='')
 bot.load_extension("cogs.discord_message_reply")
 bot.load_extension("cogs.discord_message_react")
-bot.load_extension("cogs.discord_message_haishin")
 
 
 @bot.event
