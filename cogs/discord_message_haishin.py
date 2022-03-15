@@ -12,7 +12,7 @@ class Message_haishinCog(commands.Cog):
         self.bot = bot
         self._last_member = None
         self.among_us = ["<:amoaka:933160923915497492>", "<:amokiiro:935347898546258010>",
-                     "<:amomidori:935347876597485608>", "<:amomizu:933161501005611018>"]
+                         "<:amomidori:935347876597485608>", "<:amomizu:933161501005611018>"]
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -50,7 +50,7 @@ class Message_haishinCog(commands.Cog):
             pass
         else:
             await ctx.channel.send(self.haishin(ctx))
- 
+
     @commands.Cog.listener()
     async def on_message(self, ctx):
         if ctx.author.bot:
@@ -65,5 +65,6 @@ class Message_haishinCog(commands.Cog):
             self.auto_haishin.stop()
             await ctx.add_reaction('✅')
 
+
 def setup(bot):
-    return bot.add_cog(Message_haishinCog(bot))  
+    return bot.add_cog(Message_haishinCog(bot))
