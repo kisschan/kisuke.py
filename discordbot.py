@@ -1,12 +1,22 @@
 from discord.ext import commands
 from discord.ext.commands import CommandNotFound
+from dislash import slash_commands
 from os import getenv
 import traceback
 
 bot = commands.Bot(command_prefix='')
+client = commands.Bot(command_prefix='/')
+slash = slash_commands.InteractionClient(bot, test_guilds=[932885441693220914, 889154286028738611, 930151110335938640])
+
 bot.load_extension("cogs.discord_message_reply")
 bot.load_extension("cogs.discord_message_react")
 bot.load_extension("cogs.discord_message_haishin")
+bot.load_extension("cogs.discord_slash_haishin")
+
+
+@slash.slash_command(name="ping", description="動作確認")
+async def hello(inter):
+    await inter.respond("hi this is 配信BOT ver0.1")
 
 
 @bot.event

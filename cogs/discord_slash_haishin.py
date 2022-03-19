@@ -1,14 +1,13 @@
 from discord.ext import commands
 from discord.ext import tasks
+from dislash import slash_command
 import json
 import urllib.request
 from datetime import datetime
 import random
 
-test_guilds = [932885441693220914]
 
-
-class Message_haishinCog(commands.Cog):
+class Slash_haishinCog(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
@@ -19,7 +18,7 @@ class Message_haishinCog(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         """Cogが読み込まれた時に発動"""
-        print('Message_haishinCog on ready!')
+        print('Slash_haishinCog on ready!')
 
     def haishin(self, ctx):
         streamer_emoji = ["👩", "👱", "👨", "👧"]
@@ -53,20 +52,20 @@ class Message_haishinCog(commands.Cog):
         else:
             await ctx.channel.send(self.haishin(ctx))
 
-    @commands.Cog.listener()
-    async def on_message(self, ctx):
-        if ctx.author.bot:
-            return
-        if ctx.content == "配信":
-            await ctx.channel.send(self.haishin(ctx))
-            await ctx.add_reaction('✅')
-        if ctx.content == "配信はじめ":
-            self.auto_haishin.start(ctx)
-            await ctx.add_reaction('✅')
-        if ctx.content == "配信おわり":
-            self.auto_haishin.stop()
-            await ctx.add_reaction('✅')
+    @slash_command(name="haishin", description="ぎこぽいぽいで公開している配信を取得します")
+    async def slash_haishin(self, ctx):
+        await ctx.send(self.haishin(ctx))
+
+    @slash_command(name="starthaishin", description="公開している配信者を2時間ごとに言います")
+    async def slash_start_haishin_loop(self, ctx):
+        self.auto_haishin.start(ctx)
+        await ctx.reply("ok! 配信オートをSTART!")
+
+    @slash_command(name="stophaishin", description="公開している配信者を自動的に言う機能を停止")
+    async def slash_stop_haishin_loop(self, ctx):
+        self.auto_haishin.stop()
+        await ctx.reply("ok! 配信オートをSTOP!")
 
 
 def setup(bot):
-    return bot.add_cog(Message_haishinCog(bot))
+    return bot.add_cog(Slash_haishinCog(bot))
