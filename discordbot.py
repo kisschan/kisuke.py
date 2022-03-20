@@ -16,7 +16,7 @@ bot.load_extension("cogs.discord_slash_haishin")
 
 @slash.slash_command(name="ping", description="動作確認")
 async def hello(inter):
-    await inter.respond("hi this is 配信BOT ver0.1")
+    await inter.respond("hi this is 配信BOT ver0.11")
 
 
 @bot.event
