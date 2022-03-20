@@ -56,15 +56,21 @@ class Slash_haishinCog(commands.Cog):
     async def slash_haishin(self, ctx):
         await ctx.send(self.haishin(ctx))
 
-    @slash_command(name="starthaishin", description="公開している配信者を2時間ごとに言います")
+    @slash_command(name="start-haishin", description="公開している配信者を2時間ごとに言います", guild_ids=[930151110335938640, 932885441693220914])
     async def slash_start_haishin_loop(self, ctx):
-        self.auto_haishin.start(ctx)
-        await ctx.reply("ok! 配信オートをSTART!")
+        if not self.auto_haishin.is_running():
+            self.auto_haishin.start(ctx)
+            await ctx.reply("ok! 配信オートをSTART!")
+        else:
+            await ctx.reply("もうループは始まってますぜ")
 
-    @slash_command(name="stophaishin", description="公開している配信者を自動的に言う機能を停止")
+    @slash_command(name="stop-haishin", description="公開している配信者を自動的に言う機能を停止", guild_ids=[930151110335938640, 932885441693220914])
     async def slash_stop_haishin_loop(self, ctx):
-        self.auto_haishin.stop()
-        await ctx.reply("ok! 配信オートをSTOP!")
+        if self.auto_haishin.is_running():
+            self.auto_haishin.cancel()
+            await ctx.reply("ok! 配信オートをSTOP!")
+        else:
+            await ctx.reply("ループは始まってませんぜ？")
 
 
 def setup(bot):

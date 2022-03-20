@@ -5,8 +5,6 @@ import urllib.request
 from datetime import datetime
 import random
 
-test_guilds = [932885441693220914]
-
 
 class Message_haishinCog(commands.Cog):
 
@@ -64,7 +62,7 @@ class Message_haishinCog(commands.Cog):
             self.auto_haishin.start(ctx)
             await ctx.add_reaction('✅')
         if ctx.content == "配信おわり":
-            self.auto_haishin.stop()
+            self.auto_haishin.cancel()
             await ctx.add_reaction('✅')
 
 
