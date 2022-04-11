@@ -1,7 +1,6 @@
 from discord.ext import commands
 from dislash import slash_command, Option, OptionChoice
 from .rooms_file_loader import FileLoader
-import json
 
 gikopoipoigen = "https://gikopoipoi.net/?areaid=gen&roomid="
 
@@ -62,24 +61,24 @@ class Slash_haishinCog(commands.Cog):
                    options=[
                        Option("bar_rooms", "gikopoipoiのURLを貼る(バーから)", 3, True,
                               [
-                                 OptionChoice('ＢＡＲギコ', gikopoipoigen + roomid['ＢＡＲギコ']),
-                                 OptionChoice('ＢＡＲギコ 下階', gikopoipoigen + roomid['ＢＡＲギコ 下階']),
-                                 OptionChoice('バー通り', gikopoipoigen + roomid['バー通り']),
-                                 OptionChoice('バス停', gikopoipoigen + roomid['バス停']),
-                                 OptionChoice('ハッカーのアジト', gikopoipoigen + roomid['ハッカーのアジト']),
-                                 OptionChoice('秘密のバー', gikopoipoigen + roomid['秘密のバー']),
-                                 OptionChoice('噴水広場', gikopoipoigen + roomid['噴水広場']),
-                                 OptionChoice('もなちゃと', gikopoipoigen + roomid['もなちゃと']),
-                                 OptionChoice('屋台', gikopoipoigen + roomid['屋台']),
-                                 OptionChoice('吉野家', gikopoipoigen + roomid['吉野家']),
-                                 OptionChoice('ラヂヲ局', gikopoipoigen + roomid['ラヂヲ局']),
-                                 OptionChoice('ラヂヲ局 楽屋', gikopoipoigen + roomid['ラヂヲ局 楽屋']),
-                                 OptionChoice('ラヂヲ局 第1スタジオ', gikopoipoigen + roomid['ラヂヲ局 第1スタジオ']),
-                                 OptionChoice('ラヂヲ局 第2スタジオ BEAT GIKO', gikopoipoigen + roomid['ラヂヲ局 第2スタジオ BEAT GIKO']),
-                                 OptionChoice('ラヂヲ局 第3スタジオ G-SQUID', gikopoipoigen + roomid['ラヂヲ局 第3スタジオ G-SQUID']),
-                                 OptionChoice('ラヂヲ局 舞台裏', gikopoipoigen + roomid['ラヂヲ局 舞台裏']),
-                             ]
-                            )
+                                  OptionChoice('ＢＡＲギコ', gikopoipoigen + roomid['ＢＡＲギコ']),
+                                  OptionChoice('ＢＡＲギコ 下階', gikopoipoigen + roomid['ＢＡＲギコ 下階']),
+                                  OptionChoice('バー通り', gikopoipoigen + roomid['バー通り']),
+                                  OptionChoice('バス停', gikopoipoigen + roomid['バス停']),
+                                  OptionChoice('ハッカーのアジト', gikopoipoigen + roomid['ハッカーのアジト']),
+                                  OptionChoice('秘密のバー', gikopoipoigen + roomid['秘密のバー']),
+                                  OptionChoice('噴水広場', gikopoipoigen + roomid['噴水広場']),
+                                  OptionChoice('もなちゃと', gikopoipoigen + roomid['もなちゃと']),
+                                  OptionChoice('屋台', gikopoipoigen + roomid['屋台']),
+                                  OptionChoice('吉野家', gikopoipoigen + roomid['吉野家']),
+                                  OptionChoice('ラヂヲ局', gikopoipoigen + roomid['ラヂヲ局']),
+                                  OptionChoice('ラヂヲ局 楽屋', gikopoipoigen + roomid['ラヂヲ局 楽屋']),
+                                  OptionChoice('ラヂヲ局 第1スタジオ', gikopoipoigen + roomid['ラヂヲ局 第1スタジオ']),
+                                  OptionChoice('ラヂヲ局 第2スタジオ BEAT GIKO', gikopoipoigen + roomid['ラヂヲ局 第2スタジオ BEAT GIKO']),
+                                  OptionChoice('ラヂヲ局 第3スタジオ G-SQUID', gikopoipoigen + roomid['ラヂヲ局 第3スタジオ G-SQUID']),
+                                  OptionChoice('ラヂヲ局 舞台裏', gikopoipoigen + roomid['ラヂヲ局 舞台裏']),
+                              ]
+                              )
                    ]
                    )
     async def gikopoipoi2(self, inter, bar_rooms):
