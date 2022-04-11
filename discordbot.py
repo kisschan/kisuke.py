@@ -6,7 +6,7 @@ import traceback
 
 bot = commands.Bot(command_prefix='')
 client = commands.Bot(command_prefix='/')
-slash = slash_commands.InteractionClient(bot, test_guilds=[932885441693220914, 889154286028738611, 930151110335938640])
+slash = slash_commands.InteractionClient(bot, test_guilds=[932885441693220914, 889154286028738611, 930151110335938640, 961729817529704568])
 
 bot.load_extension("cogs.discord_message_reply")
 bot.load_extension("cogs.discord_message_react")
