@@ -19,8 +19,6 @@ class Message_ReactCog(commands.Cog):
     async def on_message(self, ctx):
         if ctx.author.bot:
             return
-        if re.search("(?:([こコｺ][ろロﾛ]|殺)[すスｽ]|koro?su)|([死氏市四４4しシｼ][ねネﾈ][よヨょョﾖｮ]?)", ctx.content):
-            await ctx.delete()
         if re.search("(?:([おオｵ][めメメ][でデﾃﾞ][とトﾄ]?[うウｳ]?)|([やヤﾔ][っッｯ][たタﾀ][ーｰ]))", ctx.content):
             congratulation = ["🎉", "🎊", "㊗️"]
             for item in congratulation:
