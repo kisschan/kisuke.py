@@ -10,8 +10,7 @@ slash = slash_commands.InteractionClient(bot, test_guilds=[932885441693220914, 8
 
 bot.load_extension("cogs.discord_message_reply")
 bot.load_extension("cogs.discord_message_react")
-bot.load_extension("cogs.discord_message_haishin")
-bot.load_extension("cogs.discord_slash_haishin")
+bot.load_extension("cogs.discord_slash_commands")
 
 
 @slash.slash_command(name="ping", description="動作確認")
