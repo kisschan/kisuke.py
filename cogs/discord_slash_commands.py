@@ -32,7 +32,7 @@ class Slash_haishinCog(commands.Cog):
                                   OptionChoice('宴会', gikopoipoigen + roomid['宴会']),
                                   OptionChoice('海岸', gikopoipoigen + roomid['海岸']),
                                   OptionChoice('開発局', gikopoipoigen + roomid['開発局']),
-                                  OptionChoice('開発局通り', gikopoipoigen + roomid['開発局通り']),
+                                  OptionChoice('開発局通り', roomid['開発局通り']),
                                   OptionChoice('学校 教室', gikopoipoigen + roomid['学校 教室']),
                                   OptionChoice('学校 校庭', gikopoipoigen + roomid['学校 校庭']),
                                   OptionChoice('学校 国際教室', gikopoipoigen + roomid['学校 国際教室']),
